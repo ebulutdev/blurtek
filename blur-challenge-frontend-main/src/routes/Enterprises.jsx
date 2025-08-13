@@ -5,7 +5,7 @@ import EnterpriseDetailModal from '../components/EnterpriseDetailModal.jsx';
 import { formatDate } from '../utils/dateUtils.jsx';
 
 const Enterprises = () => {
-    const { enterprises, loading, error, addEnterprise, toggleStatus, removeEnterprise } = useEnterprise();
+    const { enterprises, loading, error, addEnterprise, updateEnterpriseById, toggleStatus, removeEnterprise } = useEnterprise();
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [selectedEnterprise, setSelectedEnterprise] = useState(null);
@@ -52,8 +52,7 @@ const Enterprises = () => {
 
     const handleUpdateEnterprise = async (enterpriseData) => {
         try {
-            // Update functionality would be implemented here
-            // For now, we'll just close the modal
+            await updateEnterpriseById(editingEnterprise.id, enterpriseData);
             setShowEditModal(false);
             setEditingEnterprise(null);
         } catch (error) {

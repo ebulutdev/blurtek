@@ -15,17 +15,35 @@ export const simpleAPICall = async ({ endpoint, body = {}, method = "POST", opti
     
     const response = await fetch(endpoint, fetchOptions)
 
-    const result = await response.json()
-    if (!response.ok) {
-        throw {
-            status: response.status,
-            message: result.detail
-        }
+    // DELETE ve PATCH istekleri için özel kontrol
+    if (response.status === 204) {
+        return null; // NoContent() response
     }
-    else {
-        if (verbose) {
-            console.log(result.status, result.message)
+
+    // Response body varsa JSON parse et
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+        const result = await response.json()
+        if (!response.ok) {
+            throw {
+                status: response.status,
+                message: result.detail
+            }
         }
-        return result.data
+        else {
+            if (verbose) {
+                console.log(result.status, result.message)
+            }
+            return result.data
+        }
+    } else {
+        // JSON olmayan response için
+        if (!response.ok) {
+            throw {
+                status: response.status,
+                message: 'Request failed'
+            }
+        }
+        return null;
     }
 }

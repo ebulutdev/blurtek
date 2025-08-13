@@ -160,7 +160,24 @@ namespace BlurApi.Controllers
                 }
             }
 
-            return NoContent();
+            // Güncellenmiş veriyi döndür
+            var response = new EnterpriseResponseDto
+            {
+                Id = enterprise.Id,
+                Title = enterprise.Title,
+                Phone = enterprise.Phone,
+                Email = enterprise.Email,
+                Balance = enterprise.Balance,
+                Verified = enterprise.Verified,
+                Address = enterprise.Address,
+                TaxNumber = enterprise.TaxNumber,
+                TaxProvince = enterprise.TaxProvince,
+                TaxDistrict = enterprise.TaxDistrict,
+                CreatedAt = enterprise.CreatedAt,
+                Disabled = enterprise.Disabled
+            };
+
+            return Ok(new { data = response });
         }
 
         // PATCH: api/enterprise/{id}/toggle-status

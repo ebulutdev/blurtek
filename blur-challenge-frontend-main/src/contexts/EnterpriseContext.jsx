@@ -48,14 +48,15 @@ export const EnterpriseProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            await updateEnterprise(id, enterpriseData);
+            const updatedEnterprise = await updateEnterprise(id, enterpriseData);
             setEnterprises(prev => 
                 prev.map(enterprise => 
                     enterprise.id === id 
-                        ? { ...enterprise, ...enterpriseData }
+                        ? updatedEnterprise
                         : enterprise
                 )
             );
+            return updatedEnterprise;
         } catch (err) {
             setError(err.message || 'Şirket güncellenirken hata oluştu');
             throw err;

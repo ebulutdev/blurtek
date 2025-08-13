@@ -3,7 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=BlurApi.db"));
+// SQL Server bağlantı stringi - Kurulum bilgilerinize göre
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+    ?? "Server=localhost\\MSSQLSERVER01;Database=BlurApiDb;Trusted_Connection=true;TrustServerCertificate=true;";
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddCors(options =>
 {

@@ -1,7 +1,0 @@
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.csproj.AssemblyReference.cache
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\rpswa.dswa.cache.json
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.AssemblyInfoInputs.cache
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.AssemblyInfo.cs
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.csproj.CoreCompileInputs.cache
-C:\Users\emirb\Desktop\blurChallange\obj\Debug\net9.0\BlurApi.MvcApplicationPartsAssemblyInfo.cache

@@ -2,6 +2,121 @@
 
 Bu proje, Blur Teknoloji için geliştirilmiş modern bir şirket yönetim sistemidir. Frontend React ve Backend .NET 9.0 teknolojileri kullanılarak geliştirilmiştir.
 
+## 🚀 HIZLI BAŞLANGIÇ - PROJEYİ ÇALIŞTIRMAK İÇİN
+
+### ⚠️ ÖNEMLİ: İki Terminal Gerekli
+
+Bu projeyi çalıştırmak için **İKİ AYRI TERMİNAL** açmanız gerekiyor. Biri backend, diğeri frontend için.
+
+### 📋 Gerekli Yazılımlar
+- **Node.js** (v18 veya üzeri) - [İndir](https://nodejs.org/)
+- **.NET 9.0 SDK** - [İndir](https://dotnet.microsoft.com/download/dotnet/9.0)
+- **Git** - [İndir](https://git-scm.com/)
+
+> **Not:** Bu proje **Microsoft SQL Server** kullanmaktadır. Veritabanı kurulumu gereklidir.
+
+### 🗄️ Veritabanı Kurulumu
+
+Bu proje **Microsoft SQL Server** kullanmaktadır. Kurulum için:
+
+1. **SQL Server LocalDB** kurun: [İndir](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb)
+2. **SQL Server Express** kurun: [İndir](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+3. **SQL Server Developer Edition** kurun: [İndir](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+
+**Veritabanı Bağlantı Bilgileri:**
+- **Sunucu:** `localhost\MSSQLSERVER01`
+- **Veritabanı:** `BlurApiDb`
+- **Kimlik Doğrulama:** Windows Authentication
+
+Kurulum sonrası:
+```bash
+# Migration oluşturun
+dotnet ef migrations add InitialCreate
+
+# Veritabanını oluşturun
+dotnet ef database update
+```
+
+### 🔧 Kurulum Adımları
+
+#### 1. Backend Kurulumu (İlk Terminal)
+
+```bash
+# 1. Backend klasörüne gidin
+cd BlurApi-main
+
+# 2. Bağımlılıkları yükleyin
+dotnet restore
+
+# 3. Projeyi derleyin
+dotnet build
+
+# 4. Backend'i çalıştırın
+dotnet run
+```
+
+**Backend başarıyla çalıştığında şu mesajları göreceksiniz:**
+```
+Connected to database.
+Now listening on: http://localhost:5153
+Application started. Press Ctrl+C to shut down.
+```
+
+> **SQL Server Veritabanı:** Veritabanı SQL Server'da `BlurApiDb` adıyla oluşturulur.
+
+#### 2. Frontend Kurulumu (İkinci Terminal)
+
+```bash
+# 1. Yeni bir terminal açın ve frontend klasörüne gidin
+cd blur-challenge-frontend-main
+
+# 2. Bağımlılıkları yükleyin
+npm install
+
+# 3. Frontend'i çalıştırın
+npm run dev
+```
+
+**Frontend başarıyla çalıştığında şu mesajları göreceksiniz:**
+```
+Local:   http://localhost:5173/
+```
+
+### 🌐 Erişim Adresleri
+
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://localhost:5153
+
+### ✅ Test Etme
+
+1. Tarayıcınızda `http://localhost:5173` adresine gidin
+2. "Şirketler Sayfasına Git" butonuna tıklayın
+3. "Yeni Şirket" butonu ile test şirketi oluşturun
+4. CRUD işlemlerini test edin
+
+### 🛠️ Sorun Giderme
+
+#### Backend Çalışmıyorsa:
+```bash
+cd BlurApi-main
+dotnet clean
+dotnet restore
+dotnet build
+dotnet run
+```
+
+#### Frontend Çalışmıyorsa:
+```bash
+cd blur-challenge-frontend-main
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+#### Port Çakışması Varsa:
+- Backend için: `dotnet run --urls "http://localhost:5154"`
+- Frontend için: `npm run dev -- --port 5174`
+
 ## 🚀 Teknolojiler
 
 ### Frontend
@@ -15,7 +130,7 @@ Bu proje, Blur Teknoloji için geliştirilmiş modern bir şirket yönetim siste
 - **.NET 9.0** - Modern .NET framework
 - **Entity Framework Core v9** - ORM
 - **EF SQL Server v9** - SQL Server provider
-- **SQL Server** - Veritabanı
+- **Microsoft SQL Server** - Veritabanı (kurulum gerekli)
 
 ## 📁 Proje Yapısı
 
@@ -37,7 +152,7 @@ src/
 └── Services/       # İş mantığı servisleri
 ```
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🛠️ Detaylı Kurulum ve Çalıştırma
 
 ### Backend Kurulumu
 
@@ -51,9 +166,9 @@ src/
    dotnet restore
    ```
 
-3. **Veritabanını oluşturun:**
+3. **Projeyi derleyin:**
    ```bash
-   dotnet ef database update
+   dotnet build
    ```
 
 4. **Uygulamayı çalıştırın:**
@@ -61,7 +176,9 @@ src/
    dotnet run
    ```
 
-Backend uygulaması `http://localhost:5000` adresinde çalışacaktır.
+Backend uygulaması `http://localhost:5153` adresinde çalışacaktır.
+
+> **Veritabanı:** SQL Server veritabanı `BlurApiDb` adıyla oluşturulur. Windows Authentication kullanılır.
 
 ### Frontend Kurulumu
 
@@ -183,6 +300,19 @@ Bu proje Blur Teknoloji için geliştirilmiştir.
 
 ---
 
-**Geliştirici:** [Adınız]  
+**Geliştirici:** Emircan Bulut  
 **Tarih:** 2025  
 **Versiyon:** 1.0.0
+
+### 📞 İletişim
+
+Proje hakkında detaylı bilgi için: **emircanbulut04@gmail.com**
+
+### 🎯 Önemli Notlar
+
+- Backend ve frontend aynı anda çalışmalıdır
+- Backend: http://localhost:5153
+- Frontend: http://localhost:5173
+- **SQL Server veritabanı kurulumu gerekli** - SQL Server Express/LocalDB kurulmalı
+- Tüm CRUD işlemleri (Create, Read, Update, Delete) çalışır durumda
+- Veritabanı: SQL Server'da `BlurApiDb`
